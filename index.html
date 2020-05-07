@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Js-partie5-exo6</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <form>
+            <div class="form-group">
+                <label for="lastName">Nom : </label>
+                <input class="form-control" type="text" id="lastName" placeholder="Nom" required />
+            </div>
+            <div class="form-group">
+                <label for="firstName">Prénom : </label>
+                <input class="form-control" type="text" id="firstName" placeholder="Prénom" required />
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Numéros de téléphone : </label>
+                <input class="form-control" id="phoneNumber" placeholder="06" required />
+            </div>
+            <div class="form-group">
+                <label for="orderDate">Date de commande : </label>
+                <input class="form-control" id="orderDate" placeholder="yyyy-mm-dd" required />
+            </div>
+            <div class="form-group">
+                <label for="creditCard">Carte bancaire : </label>
+                <input class="form-control" id="creditCard" required />
+            </div>
+            <button type="button" class="btn btn-primary">Valider</button>
+        </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.5.10/cleave.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.5.10/addons/cleave-phone.fr.js"></script>
+        <script>
+            var cleave = new Cleave('#creditCard', {
+                creditCard: true,
+                onCreditCardTypeChanged: function (type) {}
+            });
+            var cleave = new Cleave('#phoneNumber', {
+                phone: true,
+                phoneRegionCode: 'FR'
+            });
+            var cleave = new Cleave('#orderDate', {
+                date: true,
+                delimiter: '-',
+                datePattern: ['Y', 'm', 'd']
+            });
+        </script>
+    </body>
+</html>
